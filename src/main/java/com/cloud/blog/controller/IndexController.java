@@ -15,4 +15,9 @@ public class IndexController {
     public String index(){
         return "index";
     }
+
+    @RequestMapping(value = {"/editor"})
+    public String edit(){
+        return "/editor";
+    }
 }

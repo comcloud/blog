@@ -6,9 +6,8 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>主页 - 成都犀牛</title>
-<!--        markdown-->
-        <link rel="stylesheet" th:href="@{/css/editormd.min.css}" />
 
+        <link rel="stylesheet" th:href="@{/css/02c.css}" />
         <link rel="icon" type="image/x-icon" th:href="@{/assets/img/favicon.ico}"/>
         <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
@@ -25,7 +24,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">关于</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
@@ -35,41 +34,155 @@
             </div>
         </nav>
         <!-- Page Content-->
-        <div class="container-fluid p-0">
-<!--            <div class="jumbotron">-->
-<!--                <div class="media">-->
-<!--                    <div class="media-left">-->
-<!--                        <a href="#">-->
-<!--                            <img width="200px" height="200px" class="media-object" th:src="@{/assets/img/profile.jpg}" alt="文章">-->
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <h1>文章标题</h1>-->
-<!--                <P>Note: further occurrences of this error will be logged at DEBUG level</P>-->
-<!--                <p><a class="btn btn-primary btn-lg" href="#" role="button">查看更多</a></p>-->
-<!--            </div>-->
-        </div>
-            <div id="editor">
-                <textarea style="display:none;">### Hello Editor.md !</textarea>
+        <div style="margin: 50px">
+            <div class="bg">
+                <div class="container container_shadowl">
+                    <!--文章图片-->
+                    <div class="iamge">
+                        <img th:src="@{/assets/img/profile.jpg}"/>
+                    </div>
+
+                    <div class="article">
+                        <!--文章标题-->
+                        <h2>文章标题</h2>
+
+                        <!--文章部分内容-->
+                        <div class="article_content">
+                            <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                                文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章
+                                文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                                文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                                文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
+                        </div>
+
+                        <!--文章标签分类-->
+                        <div class="box box_shadowl">
+                            <span>标签</span>
+                        </div>
+
+                    </div>
+                </div>
             </div>
+            <div class="bg">
+                <div class="container container_shadowl">
+                    <!--文章图片-->
+                    <div class="iamge">
+                        <img th:src="@{/assets/img/profile.jpg}"/>
+                    </div>
+
+                    <div class="article">
+                        <!--文章标题-->
+                        <h2>文章标题</h2>
+
+                        <!--文章部分内容-->
+                        <div class="article_content">
+                            <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                                文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章
+                                文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                                文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                                文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
+                        </div>
+
+                        <!--文章标签分类-->
+                        <div class="box box_shadowl">
+                            <span>标签</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="bg">
+                <div class="container container_shadowl">
+                    <!--文章图片-->
+                    <div class="iamge">
+                        <img th:src="@{/assets/img/profile.jpg}"/>
+                    </div>
+
+                    <div class="article">
+                        <!--文章标题-->
+                        <h2>文章标题</h2>
+
+                        <!--文章部分内容-->
+                        <div class="article_content">
+                            <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                                文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章
+                                文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                                文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                                文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
+                        </div>
+
+                        <!--文章标签分类-->
+                        <div class="box box_shadowl">
+                            <span>标签</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="bg">
+                <div class="container container_shadowl">
+                    <!--文章图片-->
+                    <div class="iamge">
+                        <img th:src="@{/assets/img/profile.jpg}"/>
+                    </div>
+
+                    <div class="article">
+                        <!--文章标题-->
+                        <h2>文章标题</h2>
+
+                        <!--文章部分内容-->
+                        <div class="article_content">
+                            <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                                文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章
+                                文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                                文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                                文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
+                        </div>
+
+                        <!--文章标签分类-->
+                        <div class="box box_shadowl">
+                            <span>标签</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="bg">
+            <div class="container container_shadowl">
+                <!--文章图片-->
+                <div class="iamge">
+                    <img th:src="@{/assets/img/profile.jpg}"/>
+                </div>
+
+                <div class="article">
+                    <!--文章标题-->
+                    <h2>文章标题</h2>
+
+                    <!--文章部分内容-->
+                    <div class="article_content">
+                        <p>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                            文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章
+                            文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                            文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                            文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
+                    </div>
+
+                    <!--文章标签分类-->
+                    <div class="box box_shadowl">
+                        <span>标签</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+
         <!-- Bootstrap core JS-->
-<!--        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Third party plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
         <!-- Core theme JS-->
         <script th:src="@{/js/scripts.js}"></script>
-        <script th:src="@{/js/jquery.min.js}"></script>
-        <script th:src="@{/js/editor/editormd.min.js}"></script>
-        <script type="text/javascript">
-            $(function() {
-                var editor = editormd("editor", {
-                    width: "100%",
-                    height: "100%",
-                    markdown: "xxxx",     // dynamic set Markdown text
-                    path : "/js/editor/lib/"  // Autoload modules mode, codemirror, marked... dependents libs path
-                });
-            });
-        </script>
     </body>
 </html>

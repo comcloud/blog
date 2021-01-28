@@ -1,0 +1,74 @@
+.bg {
+	width: 900px;
+	height: 250px;
+	/*background:black ;*/
+	background: rgb(246, 246, 246);
+	position: relative;
+}
+
+.container {
+	width: 700px;
+	max-height: 600px;
+	background: rgb(255, 255, 255);
+	border-radius: 5px;
+	position: absolute;
+	top: 20px;
+	/*设置居中*/
+	left: 50%;
+	/*块级元素已知*/
+	/*margin-left: -350px;*/
+	/*块级元素未知*/
+	transform: translateX(-50%);
+	display: flex;
+	flex-direction: row;
+}
+
+.container_shadowl {
+	box-shadow: 15px 0px 20px -20px #000000, -15px 0px 20px -20px #000000, 0px 15px 10px -20px #000000, 0px -15px 10px -20px #000000;
+}
+
+.iamge {
+	margin: 50px;
+}
+
+.iamge img {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	max-width: 120px;
+	width: expression(this.width>120?"120px":this.width);
+	max-height: 140px;
+	height: expression(this.height>140?"140px":this.height);
+	/*border-radius: 6px;*/
+	box-shadow: 10px 0px 10px -10px #000000;
+}
+
+.article {
+	margin-top: 10px;
+}
+
+.article_content p {
+	line-height: 20px;
+	position: relative;
+	max-height: 80px;
+	max-width: 450px;
+	overflow: hidden;
+	font-size: 10px;
+}
+
+
+/*后伪元素*/
+
+.article_content p::after {
+	content: "......";
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding-left: 40px;
+	background: -webkit-linear-gradient(left, transparent, #fff 55%);
+	background: -o-linear-gradient(right, transparent, #fff 55%);
+	background: -moz-linear-gradient(right, transparent, #fff 55%);
+	background: linear-gradient(to right, transparent, #fff 55%);
+}
+
+
