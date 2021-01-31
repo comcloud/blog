@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.blog.mapper.IndexMapper">
+
+    <select id="selectAllFatherLabel" resultType="com.cloud.blog.entity.Label">
+        select *
+        from label
+        where father_label_id=0;
+    </select>
+    <select id="selectHomePageArticle" resultType="com.cloud.blog.entity.Article">
+        select aid,title,open_content,content,father_label,son_label from article where father_label = 1;
+    </select>
+    <select id="selectLabelNameById" resultType="java.lang.String">
+        select name
+        from label
+        where lid=#{sonLabelId}
+    </select>
+    <select id="selectHomePageArticleById" resultType="com.cloud.blog.entity.Article">
+        select aid,title,open_content,content,father_label,son_label
+        from article
+        where father_label=#{lid}
+    </select>
+</mapper>

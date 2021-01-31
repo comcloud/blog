@@ -71,4 +71,9 @@
 	background: linear-gradient(to right, transparent, #fff 55%);
 }
 
+.box{
+	position: absolute;
+	bottom: 20px;
+}
+
 
