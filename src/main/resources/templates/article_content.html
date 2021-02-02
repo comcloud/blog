@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html xmlns:th="http://www.thymeleaf.org" class="x-admin-sm" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>文章 · 详情</title>
+
+    <link rel="stylesheet" th:href="@{/css/02c.css}"/>
+    <link rel="stylesheet" th:href="@{/css/03s.css}"/>
+    <link rel="icon" type="image/x-icon" th:href="@{/assets/img/favicon.ico}"/>
+    <!--    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet"-->
+    <!--          type="text/css"/>-->
+    <!--    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css"/>-->
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link th:href="@{/css/styles.css}" rel="stylesheet"/>
+</head>
+<body id="page-top">
+
+<div class="content_bg">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+            <span class="d-block d-lg-none">成都犀牛</span>
+            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2"
+                                                 src="assets/img/profile.jpg" alt=""/></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item" th:each="label:${labelList}"><a class="nav-link js-scroll-trigger"
+                                                                     href="javascript:;"
+                                                                     th:onclick="stepIntoByLabel(this)"
+                                                                     th:value="${label.lid}"
+                                                                     th:text="${label.name}"></a></li>
+            </ul>
+        </div>
+        <div id="sidebar">
+            <h4>目录</h4>
+            <div class="markdown-body editormd-preview-container new__" id="custom-toc-container"></div>
+        </div>
+    </nav>
+    <div class="article___">
+        <div class="content___">
+                <div>
+                    <h2 th:text="${session.articleContent.getTitle()}">标题</h2>
+                    <div class="bq">
+                        <img th:src="@{/assets/img/original.png}" width="50px" height="40px"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-calendar4" viewBox="0 0 16 16" style="margin-top: -4px;">
+                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1H2zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V5z"/>
+                        </svg>
+                        <span>发布时间：</span>
+                        <span style="padding:0 30px 0 0" th:text="${session.articleContent.getPublicTime()}"></span>
+                <div style="margin-left:60px;">
+                    <span>分类专栏：技术闲聊</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-stack" viewBox="0 0 16 16">
+                        <path d="M14.12 10.163l1.715.858c.22.11.22.424 0 .534L8.267 15.34a.598.598 0 0 1-.534 0L.165 11.555a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.66zM7.733.063a.598.598 0 0 1 .534 0l7.568 3.784a.3.3 0 0 1 0 .535L8.267 8.165a.598.598 0 0 1-.534 0L.165 4.382a.299.299 0 0 1 0-.535L7.733.063z"/>
+                        <path d="M14.12 6.576l1.715.858c.22.11.22.424 0 .534l-7.568 3.784a.598.598 0 0 1-.534 0L.165 7.968a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.659z"/>
+                    </svg>
+                    <span>标签名：spring</span>
+                </div>
+                </div>
+                </div>
+            <div id="doc-content">
+                <textarea style="display:none;" id="content_area"
+                          th:text="${session.articleContent.getContent()}"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap core JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Third party plugin JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<!-- Core theme JS-->
+<script th:src="@{/js/scripts.js}"></script>
+<script th:src="@{/assets/editormd/lib/marked.min.js}"></script>
+<script th:src="@{/assets/editormd/lib/prettify.min.js}"></script>
+<script th:src="@{/assets/editormd/lib/raphael.min.js}"></script>
+<script th:src="@{/assets/editormd/lib/underscore.min.js}"></script>
+<script th:src="@{/assets/editormd/lib/sequence-diagram.min.js}"></script>
+<script th:src="@{/assets/editormd/lib/flowchart.min.js}"></script>
+<script th:src="@{/assets/editormd/editormd.min.js}"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        $(function () {
+            let editor = editormd.markdownToHTML("doc-content", {
+                htmlDecode: "style,script,iframe", // you can filter tags decode
+                emoji: true,
+                taskList: true,
+                tex: true, // 默认不解析
+                codeFold: true,
+                flowChart: false, // 默认不解析
+                sequenceDiagram: true, // 默认不解析
+                path: "/assets/editormd/lib/",
+                tocContainer    : "#custom-toc-container" // 自定义 ToC 容器层
+
+            });
+            editor.baseName
+        });
+    }
+</script>
+
+</body>
+</html>

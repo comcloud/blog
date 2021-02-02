@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.blog.mapper.HomePageMapper">
+
+    <select id="selectArticleByFatherId" resultType="com.cloud.blog.entity.Article">
+        select *
+        from article
+        where father_label = #{lid} and is_draft=0
+    </select>
+    <select id="selectArticleById" resultType="com.cloud.blog.entity.Article">
+        select *
+        from article
+        where aid=#{aid} and is_draft=0;
+    </select>
+</mapper>

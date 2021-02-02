@@ -48,12 +48,12 @@
 }
 
 .article_content p {
-	line-height: 20px;
+	line-height: 30px;
 	position: relative;
-	max-height: 80px;
+	max-height: 90px;
 	max-width: 450px;
 	overflow: hidden;
-	font-size: 10px;
+	font-size: 20px;
 }
 
 
@@ -71,4 +71,31 @@
 	background: linear-gradient(to right, transparent, #fff 55%);
 }
 
+.box{
+	position: absolute;
+	bottom: 20px;
+}
 
+.article___{
+	display: inline-block;
+	max-width: 1080px;
+	/*min-height: auto;*/
+	background: rgb(245,246,247);
+	position: relative;
+	top: 10px;
+	left: 30px;
+	padding: 0;
+	box-shadow: 6px 0px 10px -10px #000000,-6px 0px 10px -10px #000000;
+}
+
+.content___{
+	position: relative;
+	top: 20px;
+	left: 20px;
+}
+
+.bq{
+	width: 500px;
+	min-height: 60px;
+	background: rgb(238, 248, 194);
+}
