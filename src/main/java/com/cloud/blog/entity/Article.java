@@ -21,11 +21,13 @@ public class Article implements Serializable {
 
     private String content;
 
-    private LocalDateTime publicTime;
+    private String publicTime;
 
     private Integer fatherLabel;
 
     private Integer sonLabel;
+
+    private boolean isDraft;
 
     public Integer getAid() {
         return aid;
@@ -63,11 +65,11 @@ public class Article implements Serializable {
         return this;
     }
 
-    public LocalDateTime getPublicTime() {
+    public String getPublicTime() {
         return publicTime;
     }
 
-    public Article setPublicTime(LocalDateTime publicTime) {
+    public Article setPublicTime(String publicTime) {
         this.publicTime = publicTime;
         return this;
     }
@@ -87,6 +89,15 @@ public class Article implements Serializable {
 
     public Article setSonLabel(Integer sonLabel) {
         this.sonLabel = sonLabel;
+        return this;
+    }
+
+    public boolean isDraft() {
+        return isDraft;
+    }
+
+    public Article setDraft(boolean draft) {
+        isDraft = draft;
         return this;
     }
 

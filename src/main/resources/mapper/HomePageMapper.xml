@@ -5,11 +5,11 @@
     <select id="selectArticleByFatherId" resultType="com.cloud.blog.entity.Article">
         select *
         from article
-        where father_label = #{lid}
+        where father_label = #{lid} and is_draft=0
     </select>
     <select id="selectArticleById" resultType="com.cloud.blog.entity.Article">
         select *
         from article
-        where aid=#{aid}
+        where aid=#{aid} and is_draft=0;
     </select>
 </mapper>

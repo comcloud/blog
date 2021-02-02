@@ -1,0 +1,20 @@
+ul li{
+    list-style-type: none;
+}
+
+.new__ ul li a{
+    color: black;
+}
+
+.new__{
+    position: relative;
+    left:-60px ;
+}
+
+#sidebar{
+    overflow: auto;
+}
+
+#sidebar::-webkit-scrollbar{
+    width: 0;
+}

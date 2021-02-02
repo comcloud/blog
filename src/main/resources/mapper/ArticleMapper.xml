@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.blog.mapper.ArticleMapper">
+
+    <insert id="insertArticle">
+        insert into
+        article(content, public_time, father_label, son_label, title, open_content,is_draft)
+        value (#{article.content},#{article.publicTime},#{article.fatherLabel},#{article.sonLabel},#{article.title},#{article.openContent},#{article.isDraft});
+    </insert>
+</mapper>
