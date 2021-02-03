@@ -6,6 +6,7 @@
 	position: relative;
 }
 
+
 .container {
 	width: 700px;
 	max-height: 600px;
@@ -78,7 +79,7 @@
 
 .article___{
 	display: inline-block;
-	max-width: 1080px;
+	min-width: 1080px;
 	/*min-height: auto;*/
 	background: rgb(245,246,247);
 	position: relative;
@@ -98,4 +99,8 @@
 	width: 500px;
 	min-height: 60px;
 	background: rgb(238, 248, 194);
+}
+
+.l{
+	float: left;
 }

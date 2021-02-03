@@ -1,6 +1,7 @@
 package com.cloud.blog.controller;
 
 import com.cloud.blog.entity.Article;
+import com.cloud.blog.entity.Label;
 import com.cloud.blog.serivce.HomePageService;
 import com.cloud.blog.serivce.IndexService;
 import com.cloud.blog.util.ModelUtil;
@@ -44,15 +45,31 @@ public class HomePageController {
     public String goToContentPage(@RequestParam("aid") Integer aid,
                                   Model model, HttpSession session){
         Article article = homePageService.getArticleById(aid);
-        model.addAttribute("articleContent",article);
+        System.out.println(article.getContent());
         session.setAttribute("articleContent",article);
         return JsonNodeFactory.instance.objectNode().put("success",true).toString();
-//        return "article_content";
     }
 
     @RequestMapping(value = "/contentPage")
     public String contentPage(){
         return "article_content";
+    }
+
+    @RequestMapping(value = {"/","/index"})
+    public String index(Model model){
+        List<Label> labelList = indexService.getAllFatherLabel();
+        List<ModelUtil<Article,String>> articleList = indexService.getHomePageArticle();
+        model.addAttribute("articleList",articleList);
+        model.addAttribute("labelList",labelList);
+        return "index";
+    }
+
+    @RequestMapping(value = {"/editor"})
+    public String edit(Model model) {
+
+
+
+        return "/editor";
     }
 
 }

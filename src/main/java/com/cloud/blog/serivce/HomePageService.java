@@ -1,6 +1,8 @@
 package com.cloud.blog.serivce;
 
 import com.cloud.blog.entity.Article;
+import com.cloud.blog.entity.Label;
+import com.cloud.blog.util.ModelUtil;
 
 import java.util.List;
 
@@ -13,4 +15,7 @@ public interface HomePageService {
     List<Article> getArticleByFatherId(Integer lid);
 
     Article getArticleById(Integer aid);
+
+
+
 }

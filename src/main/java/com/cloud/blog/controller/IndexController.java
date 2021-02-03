@@ -19,20 +19,4 @@ import java.util.List;
 @Controller
 public class IndexController {
 
-    @Autowired
-    private IndexService indexService;
-
-    @RequestMapping(value = {"/","/index"})
-    public String index(Model model){
-        List<Label> labelList = indexService.getAllFatherLabel();
-        List<ModelUtil<Article,String>> articleList = indexService.getHomePageArticle();
-        model.addAttribute("articleList",articleList);
-        model.addAttribute("labelList",labelList);
-        return "index";
-    }
-
-    @RequestMapping(value = {"/editor"})
-    public String edit(){
-        return "/editor";
-    }
 }

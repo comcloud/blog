@@ -7,20 +7,40 @@
     <link rel="stylesheet" th:href="@{/assets/editormd/css/editormd.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
     <link rel="stylesheet" th:href="@{/css/bootstrap-theme.css}"/>
+    <link rel="stylesheet" th:href="@{/css/03s.css}"/>
 
 </head>
 <body>
-<div id="titleDiv">
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
+<div id="titleDiv" class="title_bg">
+    <!--返回标签   -->
+    <div class="backTo">
+        <a href="#">
+            <span><</span>
+            <span>返回</span>
+        </a>
+    </div>
+    <div class="input-group mb-3 reach">
+        <div class="input-group-prepend reach_icon">
             <span class="input-group-text" id="basic-addon1">@</span>
         </div>
-        <input type="text" name="title" id="title" class="form-control" placeholder="请输入文章标题" aria-label="Username"
+        <input type="text" name="title" id="title" class="form-control reach_input" placeholder="请输入文章标题"
+               aria-label="Username"
                aria-describedby="basic-addon1">
     </div>
     <div>
         <button id="save" type="button" class="btn btn-outline-success">保存草稿</button>
         <button id="publish" type="button" class="btn btn-success">发布文章</button>
+        <button id="article_list" type="button" class="btn btn-success">查看所有</button>
+    </div>
+    <div>
+        <div>
+            <select id="father" class="custom-select" onchange="change()">
+                <option></option>
+            </select>
+        </div>
+        <div>
+            <select id="son" class="custom-select"></select>
+        </div>
     </div>
 </div>
 <div id="editor">
@@ -33,68 +53,145 @@
 <script th:src="@{/js/jquery.min.js}"></script>
 <script th:src="@{/assets/editormd/editormd.min.js}"></script>
 <script type="text/javascript">
-    $(function () {
-        var editor = editormd("editor", {
-            width: "90%",
-            height: 640,
-            codeFold: true,
-            syncScrolling: "single",
-            markdown: "xxxx",     // dynamic set Markdown text
-            path: "/assets/editormd/lib/",  // Autoload modules mode, codemirror, marked... dependents libs path
-            emoji: true,
-            taskList: true,
-            tocm: true,         // Using [TOCM]
-            tex: true,                   // 开启科学公式TeX语言支持，默认关闭
-            flowChart: true,             // 开启流程图支持，默认关闭
-            sequenceDiagram: true,       // 开启时序/序列图支持，默认关闭,
-            //这个配置在simple.html中并没有，但是为了能够提交表单，使用这个配置可以让构造出来的HTML代码直接在第二个隐藏的textarea域中，方便post提交表单。
-            // saveHTMLToTextarea: true,
+    let selectData;
+    window.onload = function () {
+        $(function () {
+            let editor = editormd("editor", {
+                width: "90%",
+                height: 640,
+                codeFold: true,
+                syncScrolling: "single",
+                markdown: "xxxx",     // dynamic set Markdown text
+                path: "/assets/editormd/lib/",  // Autoload modules mode, codemirror, marked... dependents libs path
+                emoji: true,
+                taskList: true,
+                tocm: true,         // Using [TOCM]
+                tex: true,                   // 开启科学公式TeX语言支持，默认关闭
+                flowChart: true,             // 开启流程图支持，默认关闭
+                sequenceDiagram: true,       // 开启时序/序列图支持，默认关闭,
+                //这个配置在simple.html中并没有，但是为了能够提交表单，使用这个配置可以让构造出来的HTML代码直接在第二个隐藏的textarea域中，方便post提交表单。
+                // saveHTMLToTextarea: true,
 
-            // Editor.md theme, default or dark, change at v1.5.0
-            // You can also custom css class .editormd-preview-theme-xxxx
-            //这个是工具栏的主题设置
-            // theme        : (localStorage.theme) ? localStorage.theme : "dark",
-            // Preview container theme, added v1.5.0
-            // You can also custom css class .editormd-preview-theme-xxxx
-            //这个是预览的主题设置
-            // previewTheme : (localStorage.previewTheme) ? localStorage.previewTheme : "dark",
-            // Added @v1.5.0 & after version is CodeMirror (editor area) theme
-            //这是编辑框的主题设置
-            // editorTheme  : (localStorage.editorTheme) ? localStorage.editorTheme : "pastel-on-dark",
-            /**上传图片相关配置如下*/
-            imageUpload: true,
-            imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-            imageUploadURL: "/smart-api/upload/editormdPic/"//注意你后端的上传图片服务地址
-        });
+                // Editor.md theme, default or dark, change at v1.5.0
+                // You can also custom css class .editormd-preview-theme-xxxx
+                //这个是工具栏的主题设置
+                // theme        : (localStorage.theme) ? localStorage.theme : "dark",
+                // Preview container theme, added v1.5.0
+                // You can also custom css class .editormd-preview-theme-xxxx
+                //这个是预览的主题设置
+                // previewTheme : (localStorage.previewTheme) ? localStorage.previewTheme : "dark",
+                // Added @v1.5.0 & after version is CodeMirror (editor area) theme
+                //这是编辑框的主题设置
+                // editorTheme  : (localStorage.editorTheme) ? localStorage.editorTheme : "pastel-on-dark",
+                /**上传图片相关配置如下*/
+                imageUpload: true,
+                imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                imageUploadURL: "/smart-api/upload/editormdPic/"//注意你后端的上传图片服务地址
+            });
 
-        //保存操作事件
-        $('#save').on('click', function () {
-            articleFunction(true);
-
-        });
-        //发布文章事件
-        $('#publish').on('click', function () {
-            articleFunction(false);
-        });
-        function articleFunction(isDraft) {
-            let content = document.getElementById('editormd').innerText;
-            console.log(content);
-            let title = $('#title').val();
-            let article = {
-                title,
-                content,
-                isDraft
-            };
             $.ajax({
-                url: '/saveArticle',
-                data: JSON.stringify(article),
-                type: 'post',
-                success: function (data) {
-
+                type: 'get',
+                url: '/article/getAllLabel',
+                data: null,
+                success: data => {
+                    selectData = data;
+                    let fatherLabel = data.firstValue;
+                    let sonLabel = data.lastValue;
+                    let father = document.getElementById("father");
+                    var son = document.getElementById("son");
+                    fatherLabel.forEach((element) => {
+                        let option;
+                        if (element.lid === 1) {
+                            option = new Option(element.name, element.lid, false, true);
+                        } else {
+                            option = new Option(element.name, element.lid);
+                        }
+                        option.value = element.lid;
+                        father.options.add(option);
+                    });
+                    let count = 0;
+                    sonLabel.forEach((element) => {
+                        let option;
+                        if (element.lid === 1 && count === 0) {
+                            option = new Option(element.name, element.lid, false, true);
+                        } else {
+                            option = new Option(element.name, element.lid);
+                            count++;
+                        }
+                        option.value = element.lid;
+                        son.options.add(option);
+                    })
                 }
-            })
-        }
-    });
+            });
+            //查看文章列表事件
+            $('#article_list').on('click', function () {
+                location.href = '/article/article_list';
+            });
+            //保存操作事件
+            $('#save').on('click', function () {
+                articleFunction(true);
+            });
+
+            //发布文章事件
+            $('#publish').on('click', function () {
+                articleFunction(false);
+            });
+
+            function articleFunction(isDraft) {
+                let content = $('.editormd-markdown-textarea').val();
+                let title = $('#title').val();
+                let fatherLabel = document.getElementById("father").value;
+                let sonLabel = document.getElementById("son").value;
+                let article = {
+                    content,
+                    title,
+                    isDraft,
+                    fatherLabel,
+                    sonLabel
+                };
+                $.ajax({
+                    url: '/article/saveArticle',
+                    data: article,
+                    type: 'post',
+                    success: function (data) {
+                        var parse = JSON.parse(data);
+                        if (parse.success) {
+                            if (parse.isDraft) {
+                                alert("保存成功");
+                            } else {
+                                location.href = "/publish_success";
+                            }
+                        }
+                    }
+                })
+            }
+
+
+        });
+    };
+
+    function change() {
+        let sonLabel = selectData.lastValue;
+        let father = document.getElementById("father");
+        let son = document.getElementById("son");
+        //将子下拉菜单设置为空
+        son.options.length = 0;
+        let count = 0;
+        sonLabel.forEach((element) => {
+            if (element.fatherLabelId === father.selectedIndex) {
+                let option;
+                if (element.lid === 1 && count === 0) {
+                    option = new Option(element.name, element.lid, false, true);
+                } else {
+                    option = new Option(element.name, element.lid);
+                    count++;
+                }
+                option.value = element.lid;
+                son.options.add(option);
+            }
+        })
+
+    }
 </script>
 </body>
 </html>

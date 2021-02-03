@@ -9,6 +9,14 @@ public class ModelUtil<T,R> {
     private T firstValue;
     private R lastValue;
 
+    public ModelUtil() {
+    }
+
+    public ModelUtil(T firstValue, R lastValue) {
+        this.firstValue = firstValue;
+        this.lastValue = lastValue;
+    }
+
     public T getFirstValue() {
         return firstValue;
     }
@@ -25,5 +33,13 @@ public class ModelUtil<T,R> {
     public ModelUtil<T, R> setLastValue(R lastValue) {
         this.lastValue = lastValue;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "ModelUtil{" +
+                "firstValue=" + firstValue +
+                ", lastValue=" + lastValue +
+                '}';
     }
 }

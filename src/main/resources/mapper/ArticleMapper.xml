@@ -7,4 +7,14 @@
         article(content, public_time, father_label, son_label, title, open_content,is_draft)
         value (#{article.content},#{article.publicTime},#{article.fatherLabel},#{article.sonLabel},#{article.title},#{article.openContent},#{article.isDraft});
     </insert>
+    <select id="selectAllFatherLabel" resultType="com.cloud.blog.entity.Label">
+        select *
+        from label
+        where father_label_id = 0;
+    </select>
+    <select id="selectAllSonLabel" resultType="com.cloud.blog.entity.Label">
+        select *
+        from label
+        where father_label_id != 0;
+    </select>
 </mapper>

@@ -42,4 +42,12 @@ public class Label implements Serializable {
         this.fatherLabelId = fatherLabelId;
     }
 
+    @Override
+    public String toString() {
+        return "Label{" +
+                "lid=" + lid +
+                ", name='" + name + '\'' +
+                ", fatherLabelId=" + fatherLabelId +
+                '}';
+    }
 }

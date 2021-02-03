@@ -1,7 +1,11 @@
 package com.cloud.blog.mapper;
 
 import com.cloud.blog.entity.Article;
+import com.cloud.blog.entity.Label;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @author 成都犀牛
@@ -10,5 +14,11 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface ArticleMapper {
-    boolean insertArticle(Article article);
+    boolean insertArticle(@Param("article")Article article);
+
+    List<Label> selectAllFatherLabel();
+
+
+    List<Label> selectAllSonLabel();
+
 }
