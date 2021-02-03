@@ -7,19 +7,22 @@
     <link rel="stylesheet" th:href="@{/assets/editormd/css/editormd.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
     <link rel="stylesheet" th:href="@{/css/bootstrap-theme.css}"/>
-    <link rel="stylesheet" th:href="@{/css/03s.css}"/>
+<!--    <link rel="stylesheet" th:href="@{/css/03s.css}"/>-->
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/04c.css}">
+
 
 </head>
 <body>
 <div id="titleDiv" class="title_bg">
     <!--返回标签   -->
-    <div class="backTo">
-        <a href="#">
+    <div class="backTo l">
+        <a href="/">
             <span><</span>
             <span>返回</span>
         </a>
     </div>
-    <div class="input-group mb-3 reach">
+    <div class="input-group mb-3 l reach">
         <div class="input-group-prepend reach_icon">
             <span class="input-group-text" id="basic-addon1">@</span>
         </div>
@@ -27,20 +30,19 @@
                aria-label="Username"
                aria-describedby="basic-addon1">
     </div>
-    <div>
-        <button id="save" type="button" class="btn btn-outline-success">保存草稿</button>
-        <button id="publish" type="button" class="btn btn-success">发布文章</button>
-        <button id="article_list" type="button" class="btn btn-success">查看所有</button>
-    </div>
-    <div>
-        <div>
-            <select id="father" class="custom-select" onchange="change()">
-                <option></option>
+    <div class="l pulldown">
+        <div style="margin-right:1rem ">
+            <select id="father" class="custom-select custom-select-lg mb-3" onchange="change()" style="width: 14rem; height: 4rem">
             </select>
         </div>
         <div>
-            <select id="son" class="custom-select"></select>
+            <select id="son" class="custom-select custom-select-sm" style="height: 4rem; width: 14rem"></select>
         </div>
+    </div>
+    <div class="r btns">
+        <button id="save" type="button" class="btn btn-outline-success">保存草稿</button>
+        <button id="publish" type="button" class="btn btn-success">发布文章</button>
+        <button id="article_list" type="button" class="btn btn-success">查看所有</button>
     </div>
 </div>
 <div id="editor">
