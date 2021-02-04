@@ -45,7 +45,7 @@
 
                 <div class="article">
                     <!--文章标题-->
-                    <a href="javascript:;" onclick="goToContentPage(this)" th:value="${article.firstValue.aid}"><h3
+                    <a th:href="@{'/goToContentPage?aid='+${article.firstValue.aid}}" th:value="${article.firstValue.aid}"><h3
                             th:text="${article.firstValue.title}">文章标题</h3></a>
 
                     <!--文章部分内容-->
@@ -102,10 +102,10 @@
         $.ajax({
             url:'/goToContentPage?aid='+aid,
             data:null,
-            type:'post',
+            type:'get',
             success:function (data) {
                 if(JSON.parse(data).success){
-                    location.href="/contentPage";
+                    // location.href="/contentPage";
                 }else{
                     console.log(data);
                 }

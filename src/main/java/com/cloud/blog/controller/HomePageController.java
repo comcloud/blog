@@ -40,14 +40,11 @@ public class HomePageController {
         return "index::div_fragment";
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/goToContentPage",method = RequestMethod.POST)
-    public String goToContentPage(@RequestParam("aid") Integer aid,
-                                  Model model, HttpSession session){
+    @RequestMapping(value = "/goToContentPage",method = RequestMethod.GET)
+    public String goToContentPage(@RequestParam("aid") Integer aid,HttpSession session){
         Article article = homePageService.getArticleById(aid);
-        System.out.println(article.getContent());
         session.setAttribute("articleContent",article);
-        return JsonNodeFactory.instance.objectNode().put("success",true).toString();
+        return "article_content";
     }
 
     @RequestMapping(value = "/contentPage")
@@ -65,11 +62,7 @@ public class HomePageController {
     }
 
     @RequestMapping(value = {"/editor"})
-    public String edit(Model model) {
-
-
-
+    public String edit() {
         return "/editor";
     }
-
 }

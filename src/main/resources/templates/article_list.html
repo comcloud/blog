@@ -40,7 +40,7 @@
 
                 <div class="article">
                     <!--文章标题-->
-                    <a href="javascript:;" onclick="goToContentPage(this)" th:value="${article.firstValue.aid}"><h3
+                    <a th:href="@{/aid=article.firstValue.aid}" th:value="${article.firstValue.aid}"><h3
                             th:text="${article.firstValue.title}">文章标题</h3></a>
 
                     <!--文章部分内容-->
