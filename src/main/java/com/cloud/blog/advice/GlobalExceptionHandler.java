@@ -5,6 +5,8 @@ import com.cloud.blog.entity.dto.ResultBody;
 import com.cloud.blog.exception.BusinessException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,6 +18,8 @@ import java.io.IOException;
 /**
  * @author HP
  */
+@Configuration
+@Component
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
